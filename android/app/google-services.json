@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "372550639475",
+    "firebase_url": "https://login-test-769ea.firebaseio.com",
+    "project_id": "login-test-769ea",
+    "storage_bucket": "login-test-769ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372550639475:android:0bdcbc62f4714ad8b12f06",
+        "android_client_info": {
+          "package_name": "com.ihabtech.login_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372550639475-u7l7uh69h76081s8u7gbn54bc8ngssgm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp-Ps3bg1VZCGWrJX6cGEZzpCGedYkV5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372550639475-u7l7uh69h76081s8u7gbn54bc8ngssgm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
