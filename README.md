@@ -8,5 +8,5 @@ Tired of collecting your friends’ orders at restaurants? Lost track of how man
 
 ## Sign in Screen
 <p float="left">
-  <img src="Screenshots/signin.png" width="300" />
+  <img src="Screenshots/signin.jpeg" width="300" />
 </p>
