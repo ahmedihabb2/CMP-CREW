@@ -36,6 +36,10 @@ Tired of collecting your friends’ orders at restaurants? Lost track of how man
   <img src="Screenshots/home.jpeg" width="300" />
 </p>
  
+  ## Statistics screen to see total money and orders
+<p float="left">
+  <img src="Screenshots/total.jpeg" width="300" />
+</p>
  
  
  
