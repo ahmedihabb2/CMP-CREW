@@ -10,3 +10,32 @@ Tired of collecting your friends’ orders at restaurants? Lost track of how man
 <p float="left">
   <img src="Screenshots/signin.jpeg" width="300" />
 </p>
+ 
+ ## Choose whether to join or create room
+<p float="left">
+  <img src="Screenshots/room.jpeg" width="300" />
+</p>
+ 
+ ## If you are creating room you will specify the menu
+<p float="left">
+  <img src="Screenshots/create.jpeg" width="300" />
+</p>
+ 
+ ## Menu screen to make your order
+<p float="left">
+  <img src="Screenshots/menu.jpeg" width="300" />
+</p>
+ 
+ ## Order screen to view your order and payment
+<p float="left">
+  <img src="Screenshots/order.jpeg" width="300" />
+</p>
+ 
+ ## Home screen to see your friends orders
+<p float="left">
+  <img src="Screenshots/home.jpeg" width="300" />
+</p>
+ 
+ 
+ 
+ 
