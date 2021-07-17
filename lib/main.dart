@@ -48,13 +48,8 @@ async{
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(providers:[
-    StreamProvider<SingleUser>.value(
-    value: AuthServices().userStream),
-      StreamProvider<String>.value(
-          value: DatabaseServices().roomStream),
-
-    ],
+    return  StreamProvider<SingleUser>.value(
+        value: AuthServices().userStream,
       child: MaterialApp(
         home: Wrapper(),
       ),

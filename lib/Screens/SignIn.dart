@@ -1,4 +1,5 @@
 // @dart=2.9
+import 'package:cmp_crew/Screens/Home.dart';
 import 'package:cmp_crew/Screens/Intro.dart';
 import 'package:cmp_crew/Screens/Register.dart';
 import 'package:cmp_crew/Services/database.dart';

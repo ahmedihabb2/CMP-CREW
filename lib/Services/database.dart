@@ -70,13 +70,5 @@ async{
   {
     return snapshot['CurrentRoom'];
   }
-  Stream<String> get roomStream{
-    if(box.read('UserID') != null) {
-      DocumentReference docref = cmpCollection.doc(box.read('UserID'));
-      return docref.snapshots().map(roomIdFromDoc);
-    }
-    else
-      return null;
-  }
 
 }

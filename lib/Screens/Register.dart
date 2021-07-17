@@ -1,4 +1,5 @@
 import 'package:cmp_crew/Screens/SignIn.dart';
+import 'package:cmp_crew/Screens/Wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -134,8 +135,14 @@ class _RegisterState extends State<Register> {
                           setState(() {
                             loading = true;
                           });
-                          dynamic result =
-                              await _auth.regWithEmailandpass(email.trim(),username.trim(), password);
+
+                          dynamic result = await _auth.regWithEmailandpass(email.trim(),username.trim(), password);
+                          Navigator.pushReplacement(context,
+                              PageRouteBuilder(
+                                pageBuilder: (context, animation1, animation2) => Wrapper(),
+                                transitionDuration: Duration(seconds: 0),
+                              )
+                          );
                           box.write('room', '0');
                           if (result == null)
                             setState(() {

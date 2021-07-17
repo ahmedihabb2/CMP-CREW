@@ -14,7 +14,6 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<SingleUser>(context);
-    final room = Provider.of<String>(context);
-    return user!=null ? (room=='0' || room==null) ? PreHome() : Home(roomID: room,):SignIn();
+    return user!=null ? (box.read('room')=='0' || box.read('room')==null) ? PreHome() : Home(roomID: box.read('room'),):SignIn();
   }
 }

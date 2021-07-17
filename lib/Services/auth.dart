@@ -8,16 +8,15 @@ import 'package:get_storage/get_storage.dart';
 class AuthServices{
   final box = GetStorage();
   //Create instance from firestore
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
   //Create user model
   SingleUser? _userFromFirebase(User? user)
   {
-    return user!=null ? SingleUser(uid: user.uid) : null ;
+    return user!=null ?SingleUser(uid: user.uid) : null ;
   }
 
   Stream<SingleUser?>get userStream {
-    return _auth.idTokenChanges()
+    return _auth.authStateChanges()
         .map(_userFromFirebase);
   }
 
@@ -42,10 +41,6 @@ class AuthServices{
       UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       User user = result.user!;
       box.write("UserID",user.uid);
-      DatabaseServices database = DatabaseServices(uid:box.read("UserID") );
-      await database.getCurrentRoom();
-      print(database.roomID);
-      box.write('room',database.roomID);
       return _userFromFirebase(user);
     }catch(e)
     {

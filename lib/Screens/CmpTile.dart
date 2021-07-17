@@ -12,7 +12,7 @@ class CMPTile extends StatelessWidget {
     List keys = cmp!.order!.keys.toList();
     List values = cmp!.order!.values.toList();
     return Padding(
-      padding: EdgeInsets.only(top: 8),
+      padding: EdgeInsets.only(top: 4,bottom: 4),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),

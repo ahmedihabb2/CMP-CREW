@@ -269,7 +269,59 @@ class _MenuScreenState extends State<MenuScreen> {
                         ),
                       ),
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  GestureDetector(
+                    onTap: ()async{
+                      if(box.read('role') != 1)
+                        {
+                          Fluttertoast.showToast(
+                              msg: "Only admin can delete all orders",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.grey[700],
+                              textColor: Colors.white,
+                              fontSize: 16.0);
+                        }
+                      else
+                        {
+                          await OrderServices(uid: box.read("UserID")).deleteAllOrders();
+                          Fluttertoast.showToast(
+                              msg: "Done",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.grey[700],
+                              textColor: Colors.white,
+                              fontSize: 16.0);
+                        }
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 9,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                          color: box.read('role') == 1
+                              ? Colors.blue[700]
+                              : Colors.grey[600],
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Icon(
+                          Icons.delete,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

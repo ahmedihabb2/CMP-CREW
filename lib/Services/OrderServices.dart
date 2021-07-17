@@ -13,7 +13,8 @@ class OrderServices
     RoomsR.doc(uid).update(
         {
           "Order": order,
-          "TotalPrice" : totalPrice
+          "TotalPrice" : totalPrice,
+          "Change" : FieldValue.delete()
         }
     );
   }
@@ -54,5 +55,18 @@ class OrderServices
         "Order" : FieldValue.delete()
       }
     );
+  }
+
+  Future deleteAllOrders()
+ async {
+    CollectionReference RoomsR = FirebaseFirestore.instance.collection(
+        box.read("room") + "R");
+    var snapshots=RoomsR.snapshots();
+    var querySnapshots = await RoomsR.get();
+    for (var doc in querySnapshots.docs) {
+      await doc.reference.update({
+        'Order': FieldValue.delete(),
+      });
+    }
   }
 }
