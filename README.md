@@ -1,17 +1,45 @@
-# CMP CREW
+<html><H1 align="center">
 
-A simple application that helps you and your friends to collect your orders
-with the cost that everyone should pay and the total cost and total order
+CMP CREW
+ </H1>
+<H1 align="center">
 
-## Getting Started
+Tired of collecting your friends’ orders at restaurants? Lost track of how many of you want tea? Don’t worry we got you covered! Use CMP Crew, Create a room, invite your friends to join, and let them add their orders to the shared menu!
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Sign in Screen
+<p float="left">
+  <img src="Screenshots/signin.jpeg" width="300" />
+</p>
+ 
+ ## Choose whether to join or create room
+<p float="left">
+  <img src="Screenshots/room.jpeg" width="300" />
+</p>
+ 
+ ## If you are creating room you will specify the menu
+<p float="left">
+  <img src="Screenshots/create.jpeg" width="300" />
+</p>
+ 
+ ## Menu screen to make your order
+<p float="left">
+  <img src="Screenshots/menu.jpeg" width="300" />
+</p>
+ 
+ ## Order screen to view your order and payment
+<p float="left">
+  <img src="Screenshots/order.jpeg" width="300" />
+</p>
+ 
+ ## Home screen to see your friends orders
+<p float="left">
+  <img src="Screenshots/home.jpeg" width="300" />
+</p>
+ 
+  ## Statistics screen to see total money and orders
+<p float="left">
+  <img src="Screenshots/total.jpeg" width="300" />
+</p>
+ 
+ 
+ 
