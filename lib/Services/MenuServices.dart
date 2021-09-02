@@ -26,6 +26,11 @@ class MenuServices
     CollectionReference RoomsR =FirebaseFirestore.instance.collection(roomID+"R");
     CollectionReference cmpData =FirebaseFirestore.instance.collection("CMP");
     DocumentSnapshot cmpDoc=await  cmpData.doc(CreatorID).get();
+    List roomshistory = cmpDoc['Roomshistory'];
+    roomshistory.add(roomID);
+    await cmpData.doc(CreatorID).update({
+      "Roomshistory" : roomshistory.toSet().toList()
+    });
     await RoomsR.doc(CreatorID).set({
       "Name": cmpDoc["Name"]+" (Admin)",
     });

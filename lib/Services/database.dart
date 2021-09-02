@@ -14,7 +14,8 @@ class DatabaseServices{
   Future updateUserData(String name ,String CurrentRoom) async{
     return await cmpCollection.doc(uid).set({
       "Name" : name ,
-      "CurrentRoom" : CurrentRoom
+      "CurrentRoom" : CurrentRoom ,
+      "Roomshistory" : []
     });
   }
 
