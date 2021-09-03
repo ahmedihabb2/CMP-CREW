@@ -34,6 +34,11 @@ class RoomFinder {
     }
     CollectionReference cmpData = FirebaseFirestore.instance.collection("CMP");
     DocumentSnapshot cmpDoc = await cmpData.doc(userid).get();
+    List roomshistory = cmpDoc['Roomshistory'];
+    roomshistory.add(roomid);
+    await cmpData.doc(userid).update({
+      "Roomshistory" : roomshistory.toSet().toList()
+    });
     CollectionReference RoomsR =
         FirebaseFirestore.instance.collection(roomid + "R");
     bool exist=false;

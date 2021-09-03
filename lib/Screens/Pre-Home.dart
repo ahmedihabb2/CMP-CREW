@@ -1,9 +1,8 @@
 import 'package:cmp_crew/Models/LoadingModel.dart';
-import 'package:cmp_crew/Screens/CreatingRoom.dart';
 import 'package:cmp_crew/Screens/Home.dart';
 import 'package:cmp_crew/Screens/JoinigRoom.dart';
 import 'package:cmp_crew/Screens/RoomName.dart';
-import 'package:cmp_crew/Screens/Wrapper.dart';
+import 'package:cmp_crew/Screens/RoomsHistory.dart';
 import 'package:cmp_crew/Services/RoomFinder.dart';
 import 'package:cmp_crew/Services/database.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +51,7 @@ class _PreHomeState extends State<PreHome> {
                   borderRadius: BorderRadius.circular(10.0),
               ),
               color: Colors.grey[500],
-              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.22, vertical:MediaQuery.of(context).size.height*0.023 ),
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.20, vertical:MediaQuery.of(context).size.height*0.023 ),
               onPressed: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>RoomName()));
               },
@@ -60,13 +59,20 @@ class _PreHomeState extends State<PreHome> {
             ),
             SizedBox(height: 10,),
             RaisedButton(
+
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               color: Colors.grey[600],
-              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.12, vertical:MediaQuery.of(context).size.height*0.023 ),
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.21, vertical:MediaQuery.of(context).size.height*0.023 ),
               onPressed: ()async{
-                setState(() {
+                Navigator.pushReplacement(context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation1, animation2) => RoomsHistory(),
+                      transitionDuration: Duration(seconds: 0),
+                    )
+                );
+                /*setState(() {
                   loading = true;
                 });
                 DatabaseServices database = DatabaseServices(uid:box.read("UserID") );
@@ -119,9 +125,9 @@ class _PreHomeState extends State<PreHome> {
                         backgroundColor: Colors.grey[700],
                         textColor: Colors.white,
                         fontSize: 16.0);
-                  }
+                  }*/
               },
-              child: Text("Join last room you entered" , style: TextStyle(color: Colors.black , fontSize: 20),),
+              child: Text("Room history" , style: TextStyle(color: Colors.black , fontSize: 20),),
             )
           ],
         ),
