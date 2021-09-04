@@ -34,7 +34,7 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.ihabtech.login_test"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 28
         multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
@@ -59,6 +59,7 @@ dependencies {
 
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
+    implementation 'com.google.android.gms:play-services-ads:20.3.0'
 }
 flutter {
     source '../..'

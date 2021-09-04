@@ -1,13 +1,11 @@
 // @dart=2.9
-import 'package:cmp_crew/Screens/Home.dart';
 import 'package:cmp_crew/Screens/Intro.dart';
 import 'package:cmp_crew/Screens/Register.dart';
-import 'package:cmp_crew/Services/database.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:cmp_crew/Services/AdHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:cmp_crew/Services/auth.dart';
 import 'package:get_storage/get_storage.dart';
-
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../loading.dart';
 
 class SignIn extends StatefulWidget {
@@ -24,6 +22,48 @@ class _SignInState extends State<SignIn> {
   final AuthServices _auth = AuthServices();
   bool loading = false;
   final box = GetStorage();
+  BannerAd _ad;
+  bool isLoaded;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _ad = BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId,
+      request: AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (_){
+          setState(() {
+            isLoaded = true;
+          });
+        },
+        onAdFailedToLoad: (_,error){
+          print('ad failed' + error.toString());
+        }
+      )
+    );
+    _ad.load();
+  }
+
+  Widget checkforad()
+  {
+    if(isLoaded == true)
+      {
+        return Container(
+          alignment: Alignment.center,
+          width: _ad.size.width.toDouble(),
+          child: AdWidget(
+            ad: _ad,
+          ),
+        );
+      }
+    else
+      {
+        return CircularProgressIndicator();
+      }
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -42,7 +82,6 @@ class _SignInState extends State<SignIn> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-
               TextFormField(
                 decoration: InputDecoration(
           hintText: "Email",
@@ -92,6 +131,7 @@ class _SignInState extends State<SignIn> {
               SizedBox(
                 height: 10,
               ),
+              checkforad(),
               RaisedButton(
                 color: Colors.indigo,
                 child: Text(
