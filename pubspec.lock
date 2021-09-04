@@ -226,6 +226,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  huawei_analytics:
+    dependency: "direct main"
+    description:
+      name: huawei_analytics
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.2.0+301"
   intl:
     dependency: transitive
     description:

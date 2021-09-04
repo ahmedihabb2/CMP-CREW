@@ -51,5 +51,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <provider
+            android:authorities="${applicationId}.HMSContentProvider"
+            android:name="com.huawei.hms.flutter.analytics.AnalyticsContentProvider"/>
     </application>
 </manifest>
