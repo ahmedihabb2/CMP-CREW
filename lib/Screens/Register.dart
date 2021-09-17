@@ -32,7 +32,7 @@ class _RegisterState extends State<Register> {
             body: Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: ExactAssetImage('assets/Electrical.png'),
+                      image: ExactAssetImage('assets/Intro.png'),
                       fit: BoxFit.cover)),
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Form(
@@ -160,7 +160,7 @@ class _RegisterState extends State<Register> {
                           )
                       );
                     },
-                        child: Text("Already CMP? .. Etfadal ed5ol" ,
+                        child: Text("Already CMP? .. Sign in" ,
                           style: TextStyle(color: Colors.white
                             ,
                             decoration: TextDecoration.underline,

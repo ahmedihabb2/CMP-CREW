@@ -1,4 +1,5 @@
 // @dart=2.9
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cmp_crew/Models/SingleUser.dart';
 import 'package:cmp_crew/Screens/MenuScreen.dart';
@@ -84,36 +85,41 @@ class _HomeState extends State<Home> {
       value: databaseServices.cmps,
       child: Scaffold(
         
-        bottomNavigationBar: BottomNavigationBar(
-          selectedFontSize: 13,
-          unselectedFontSize: 12,
-          currentIndex: currentindex,
-          unselectedItemColor: Colors.blue[700],
-          selectedItemColor: Colors.blue[900],
-          selectedIconTheme: IconThemeData(
-            size: 30
-          ),
-          onTap: (index){
+        bottomNavigationBar: BottomNavyBar(
+          selectedIndex: currentindex,
+          onItemSelected: (index){
             setState(() {
               currentindex = index;
             });
           },
           items: [
-            BottomNavigationBarItem(
-                label: "Home",
-                icon: Icon(Icons.home)
+            BottomNavyBarItem(
+                title: Text( "Home"),
+                icon: Icon(Icons.home),
+              textAlign: TextAlign.center,
+              activeColor: Colors.blue[900],
+              inactiveColor: Colors.blue[500]
             ),
-            BottomNavigationBarItem(
-              label: "Statistics",
-              icon: Icon(Icons.filter_list)
+            BottomNavyBarItem(
+              title: Text( "Statistics"),
+              icon: Icon(Icons.bar_chart),
+              textAlign: TextAlign.center,
+                activeColor: Colors.blue[900],
+                inactiveColor: Colors.blue[500]
             ),
-            BottomNavigationBarItem(
-                label: "Menu",
-                icon: Icon(Icons.menu_book)
+            BottomNavyBarItem(
+              title: Text( "Menu"),
+                icon: Icon(Icons.menu_book),
+              textAlign: TextAlign.center,
+                activeColor: Colors.blue[900],
+                inactiveColor: Colors.blue[500]
             ),
-            BottomNavigationBarItem(
-                label: "Order",
-                icon: Icon(Icons.settings)
+            BottomNavyBarItem(
+              title: Text( "Order"),
+                icon: Icon(Icons.settings),
+              textAlign: TextAlign.center,
+                activeColor: Colors.blue[900],
+                inactiveColor: Colors.blue[500]
             ),
           ],
         ),

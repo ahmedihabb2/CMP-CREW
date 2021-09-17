@@ -153,177 +153,174 @@ class _MenuScreenState extends State<MenuScreen> {
                 ),
               ],
             ),
-            bottomNavigationBar: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: (){
+            floatingActionButton: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                box.read('role') == 1 ?GestureDetector(
+                  onTap: (){
 
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 9,
-                              offset: Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
-                          color: box.read('role') == 1
-                              ? Colors.blue[700]
-                              : Colors.grey[600],
-                          borderRadius: BorderRadius.all(Radius.circular(50))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Icon(
-                          Icons.edit,
-                          color: Colors.white,
-                        ),
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 9,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                        color:
+                            Colors.blue[700]
+                            ,
+                        borderRadius: BorderRadius.all(Radius.circular(50))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Icon(
+                        Icons.edit,
+                        color: Colors.white,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () async {
-                      bool valid = true;
-                      bool noChecked = false;
-                      if(!checked.contains(true)) noChecked=true;
-                      for(int i=0 ; i< data.length ; i++)
-                        {
-                          if(checked[i] &&(qty[i]==0 || qty[i] < 0 || qty[i] >50))
-                            {
-                              valid=false;
-                              Fluttertoast.showToast(
-                                  msg: "Qty cannot be empty or zero and max 50",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.CENTER,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.grey[700],
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                              break;
-                            }
-                        }
-                     if(valid&&!noChecked)
-                       {
-                         double sum = 0;
-                         Map<String, List<double>> order = {};
-                         for (int i = 0; i < data.length; i++) {
-                           if (checked[i]) {
-                             order[items[i]] = [
-                               double.parse(Prices[i]) * qty[i],
-                               qty[i].toDouble()
-                             ];
-                             sum += double.parse(Prices[i]) * qty[i];
-                           }
+                ) : SizedBox(),
+                SizedBox(
+                  width: 10,
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    bool valid = true;
+                    bool noChecked = false;
+                    if(!checked.contains(true)) noChecked=true;
+                    for(int i=0 ; i< data.length ; i++)
+                      {
+                        if(checked[i] &&(qty[i]==0 || qty[i] < 0 || qty[i] >50))
+                          {
+                            valid=false;
+                            Fluttertoast.showToast(
+                                msg: "Qty cannot be empty or zero and max 50",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.grey[700],
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                            break;
+                          }
+                      }
+                   if(valid&&!noChecked)
+                     {
+                       double sum = 0;
+                       Map<String, List<double>> order = {};
+                       for (int i = 0; i < data.length; i++) {
+                         if (checked[i]) {
+                           order[items[i]] = [
+                             double.parse(Prices[i]) * qty[i],
+                             qty[i].toDouble()
+                           ];
+                           sum += double.parse(Prices[i]) * qty[i];
                          }
-                         print(box.read("UserID"));
-                         await OrderServices(uid: box.read("UserID"))
-                             .submitOrder(order, sum);
+                       }
+                       print(box.read("UserID"));
+                       await OrderServices(uid: box.read("UserID"))
+                           .submitOrder(order, sum);
 
-                         Fluttertoast.showToast(
-                             msg: "Done ... Bos kda 3la el order screen ;)",
-                             toastLength: Toast.LENGTH_SHORT,
-                             gravity: ToastGravity.CENTER,
-                             timeInSecForIosWeb: 1,
-                             backgroundColor: Colors.grey[700],
-                             textColor: Colors.white,
-                             fontSize: 16.0);
-                       }
-                     else
-                       {
-                         Fluttertoast.showToast(
-                             msg: "Pick at least one order",
-                             toastLength: Toast.LENGTH_SHORT,
-                             gravity: ToastGravity.CENTER,
-                             timeInSecForIosWeb: 1,
-                             backgroundColor: Colors.grey[700],
-                             textColor: Colors.white,
-                             fontSize: 16.0);
-                       }
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 9,
-                              offset: Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
-                          color: checked.contains(true)
-                              ? Colors.blue[700]
-                              : Colors.grey[600],
-                          borderRadius: BorderRadius.all(Radius.circular(50))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Icon(
-                          Icons.save,
-                          color: Colors.white,
-                        ),
+                       Fluttertoast.showToast(
+                           msg: "Done ... Bos kda 3la el order screen ;)",
+                           toastLength: Toast.LENGTH_SHORT,
+                           gravity: ToastGravity.CENTER,
+                           timeInSecForIosWeb: 1,
+                           backgroundColor: Colors.grey[700],
+                           textColor: Colors.white,
+                           fontSize: 16.0);
+                     }
+                   else
+                     {
+                       Fluttertoast.showToast(
+                           msg: "Pick at least one order",
+                           toastLength: Toast.LENGTH_SHORT,
+                           gravity: ToastGravity.CENTER,
+                           timeInSecForIosWeb: 1,
+                           backgroundColor: Colors.grey[700],
+                           textColor: Colors.white,
+                           fontSize: 16.0);
+                     }
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 9,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                        color: checked.contains(true)
+                            ? Colors.blue[700]
+                            : Colors.grey[600],
+                        borderRadius: BorderRadius.all(Radius.circular(50))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Icon(
+                        Icons.save,
+                        color: Colors.white,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  GestureDetector(
-                    onTap: ()async{
-                      if(box.read('role') != 1)
-                        {
-                          Fluttertoast.showToast(
-                              msg: "Only admin can delete all orders",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.CENTER,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.grey[700],
-                              textColor: Colors.white,
-                              fontSize: 16.0);
-                        }
-                      else
-                        {
-                          await OrderServices(uid: box.read("UserID")).deleteAllOrders();
-                          Fluttertoast.showToast(
-                              msg: "Done",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.CENTER,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.grey[700],
-                              textColor: Colors.white,
-                              fontSize: 16.0);
-                        }
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 9,
-                              offset: Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
-                          color: box.read('role') == 1
-                              ? Colors.blue[700]
-                              : Colors.grey[600],
-                          borderRadius: BorderRadius.all(Radius.circular(50))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Icon(
-                          Icons.delete,
-                          color: Colors.white,
-                        ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                box.read('role') == 1 ? GestureDetector(
+                  onTap: ()async{
+                    if(box.read('role') != 1)
+                      {
+                        Fluttertoast.showToast(
+                            msg: "Only admin can delete all orders",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.CENTER,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.grey[700],
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                      }
+                    else
+                      {
+                        await OrderServices(uid: box.read("UserID")).deleteAllOrders();
+                        Fluttertoast.showToast(
+                            msg: "Done",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.CENTER,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.grey[700],
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                      }
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 9,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                        color: box.read('role') == 1
+                            ? Colors.blue[700]
+                            : Colors.grey[600],
+                        borderRadius: BorderRadius.all(Radius.circular(50))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Icon(
+                        Icons.delete,
+                        color: Colors.white,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ) : SizedBox(),
+              ],
             ),
           );
         } else {

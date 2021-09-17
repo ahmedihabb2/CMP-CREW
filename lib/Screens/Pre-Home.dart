@@ -25,7 +25,7 @@ class _PreHomeState extends State<PreHome> {
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: ExactAssetImage('assets/Electrical2.png'),
+                image: ExactAssetImage('assets/Intro.png'),
                 fit: BoxFit.cover
             )
         ),

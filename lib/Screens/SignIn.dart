@@ -28,11 +28,10 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
 
     return loading? Loading() :Scaffold(
-
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: ExactAssetImage('assets/Electrical.png'),
+                image: ExactAssetImage('assets/Intro.png'),
                 fit: BoxFit.cover
             )
         ),
@@ -42,7 +41,8 @@ class _SignInState extends State<SignIn> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-
+              error != '' ?Text(error , style: TextStyle(color: Colors.red),):SizedBox(),
+              SizedBox(height: 2,),
               TextFormField(
                 decoration: InputDecoration(
           hintText: "Email",
@@ -109,7 +109,7 @@ class _SignInState extends State<SignIn> {
                     dynamic result =await _auth.signinWithEmailandpass(email.trim(), password);
                     if(result == null)
                       setState(() {
-                        error="Email or Password is incorrect";
+                        error="Incorrect email or password";
                         loading = false;
                       });
                   }
@@ -132,15 +132,12 @@ class _SignInState extends State<SignIn> {
                   )
               ),
               TextButton(
-                  child: const Text('Click Me (Important)'),
+                  child: const Text('User guides'),
                   onPressed:(){ Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context)=>Intro())
                   );}
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text(error , style: TextStyle(color: Colors.red),),
-              ),
+
             ],
           ),
         ),

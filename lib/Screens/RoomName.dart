@@ -20,7 +20,7 @@ class RoomName extends StatelessWidget {
         body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: ExactAssetImage('assets/Electrical.png'),
+                  image: ExactAssetImage('assets/Intro.png'),
                   fit: BoxFit.cover
               )
           ),
