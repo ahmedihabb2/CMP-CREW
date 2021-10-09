@@ -52,4 +52,26 @@ class MenuServices {
   Stream getMenu(String? roomID) {
     return Rooms.doc(roomID).snapshots().map(dataFromMenu);
   }
+
+  Future getMenus (String roomID)
+  async{
+    DocumentReference documentReference = Rooms.doc(roomID);
+    return await documentReference.get().then((value) {
+      return value.data();
+    });
+  }
+  Future updateMenu(String roomID,List items , List Prices)
+  async{
+    DocumentReference documentReference = Rooms.doc(roomID);
+    var data = await documentReference.get();
+    Map<String, String?> menu = {
+      "Admin": data["Admin"],
+      "Name": data["Name"],
+      for (int i = 0; i < items.length; i++) items[i]: Prices[i]
+    };
+    Rooms.doc(roomID).set(
+      menu
+    );
+
+  }
 }
